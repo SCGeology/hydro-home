@@ -1,0 +1,36 @@
+@charset "utf-8";
+/* CSS Document for Forms */
+
+
+#leftcolum {
+	float: left; 
+	width: 32em; /* since this element is floated, a width must be given */
+	border-right: 1px solid #EBEBEB;
+		padding: 5px 2px; /* top and bottom padding create visual space within this div */
+		margin-left: 5px;
+}
+#rightcolum {
+	float: right; 
+	width: 32em; /* since this element is floated, a width must be given */
+	border-left: 1px solid #EBEBEB; /* the background color will be displayed for the length of the content in the column, but no further */
+	color:#000;
+	padding: 5px 2px; /* top and bottom padding create visual space within this div */
+	margin-left: 5px;
+}
+
+}
+ #leftcolum h3, #rightcolum h3 {
+	margin-left: 10px; /* the left and right margin should be given to every element that will be placed in the side columns */
+	margin-right: 10px;
+	padding:2px;
+	border-bottom: 1px solid #666;
+	font-size: 1.25em;}
+	
+ #leftcolum p, #rightcolum p {
+	margin-left: 10px; /* the left and right margin should be given to every element that will be placed in the side columns */
+	margin-right: 10px;}
+.room {
+	margin-top: 15px;
+	margin-left: 10px; /* the left and right margin should be given to every element that will be placed in the side columns */
+	margin-right: 10px;
+	margin-bottom: 5px;}

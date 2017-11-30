@@ -1,0 +1,412 @@
+@charset "utf-8";
+body {
+	font: 76% Verdana, Arial, Helvetica, sans-serif;
+	background: #ABB7C2;
+	margin: 0; /* it's good practice to zero the margin and padding of the body element to account for differing browser defaults */
+	padding: 0;
+	text-align: center; /* this centers the container in IE 5* browsers. The text is then set to the left aligned default in the #container selector */
+	color: #000000;
+}
+#container {
+	width: 800px;  /* using 20px less than a full 800px width allows for browser chrome and avoids a horizontal scroll bar */
+	background: #FFFFFF url(../assets/design/drop_shadow.gif) repeat-y;
+	margin: 0 auto;
+	text-align: left; /* this overrides the text-align: center on the body element. */
+	padding-right: 8px;
+	padding-left: 8px;
+}
+#header {
+	background: #000000 url(../assets/BannerNew.gif) no-repeat;
+	padding: 0 0px;  /* this padding matches the left alignment of the elements in the divs that appear beneath it. If an image is used in the #header instead of text, you may want to remove the padding. */
+	height: 95px;
+}
+#header .sandbag {
+	float:left;
+	clear:left;
+	width:100px;
+	height: 90px;
+}
+#header h1 {
+	margin: 0; /* zeroing the margin of the last element in the #header div will avoid margin collapse - an unexplainable space between divs. If the div has a border around it, this is not necessary as that also avoids the margin collapse */
+	padding: 10px 0; /* using padding instead of margin will allow you to keep the element away from the edges of the div */
+	height: 1px;
+	width: 1px;
+	overflow: hidden;
+	position: absolute;
+	left: -1000px;
+	top: auto;
+}
+#navtop {
+	background-image:url("../assets/design/greennav.jpg");
+	background-repeat:repeat-x;
+	width: 800px;
+	height: 35px;
+}
+#navtop ul {
+	padding: .80em 0;
+	margin: 0;
+	list-style-type: none;
+	color: #000;
+	width: 100%;
+	font: normal 100% Verdana, Arial, Helvetica, sans-serif;
+	text-align: center;
+	font-size:1em;
+}
+#navtop li {
+	display: inline;
+}
+#navtop li a {
+	text-decoration: none;
+	color: #000;
+	padding: .25em .75em;
+	border: 1px solid #000000;
+	font-weight:bold;
+}
+#navtop li a.first {
+	background-color: #8a3b25;
+	color:#FFF;
+}
+#navtop li a:hover {
+	background-color: #369;
+	color: #fff;
+}
+#navtop ul li.hid {
+	overflow: hidden;
+	list-style-type: none;
+	border: none;
+}
+#sidebar1 {
+	float: left; /* since this element is floated, a width must be given */
+	width: 160px; /* the actual width of this div, in standards-compliant browsers, or standards mode in Internet Explorer will include the padding and border in addition to the width */
+	color: #FFFFFF;
+	margin: 10px;
+	padding:0 0 10px;
+	background: url(../assets/design/box160_green_base.gif) no-repeat left bottom;
+}
+#sidebar1 .box160 {
+	width:160px;
+	background:#4A5231 url(../assets/design/box160_green_nb.gif) no-repeat left top;
+	height:auto;
+}
+#sidebar1 .box160 h3 {
+	line-height:31px;
+	color:#FFFFFF;
+	padding:0 15px;
+	margin:0;
+	font-size:1.15em;
+	border-bottom: 2px solid #252525;
+}
+#sidebar1 .box160 p {
+	padding:15px 15px 0px;
+	margin:0;
+	background:#4A5231;
+	line-height:1.3em;
+	font-size:1em;
+	color:#fff;
+	border-right: 1px solid #333333;
+	border-left: 1px solid #333333;
+}
+#sidebar1 .box160 ul {
+	list-style:none;
+	padding:10px 14px 0;
+	width:130px;
+	background:#4A5231;
+	height:auto;
+	border-right: 1px solid #333333;
+	border-left: 1px solid #333333;
+	margin: 0px;
+}
+#sidebar1 .box160 ul li {
+	text-decoration:none;
+	color:#FFFFFF;
+	padding:5px 0;
+	font-size:1em;
+	border-bottom:1px solid #383F25;
+	word-spacing:-1px;
+	list-style: none;
+}
+#sidebar1 .box160 ul li a {
+	text-decoration:none;
+	color:#FFFFFF;
+	font-weight:bold;
+}
+#sidebar1 .box160 ul li a:hover {
+	text-decoration:none;
+	color:#fff200;
+	font-weight:bold;
+}
+#sidebar {
+	float: right; /* since this element is floated, a width must be given */
+	width: 180px; /* the actual width of this div, in standards-compliant browsers, or standards mode in Internet Explorer will include the padding and border in addition to the width */
+	background: #ffffff; /* padding keeps the content of the div away from the edges */
+	margin: 10px 10px 15px;
+	padding:0 0 10px 10px;
+	border-left: 1px solid #CCC;
+}
+/* Main Content */
+
+#mainContent .breadcrumb {
+	font-size: 1em;
+	color: #202020;
+}
+#mainContent h1 {
+	padding: 2px 5px;
+	color: #1F1F1F;
+	font-size: 1.5em;
+	border-bottom: 1px solid #CCC;
+}
+#mainContent h2 {
+	padding: 2px 5px;
+	color: #1F1F1F;
+	font-size: 1.25em;
+}
+#mainContent h3 {
+	border-top: 1px solid #ABB7C2;
+	border-bottom: 1px solid #ABB7C2;
+	padding: 2px 5px;
+	color: #1F1F1F;
+	font-size: 1em;
+}
+#mainContent li {
+	font-size: 1em;
+	margin-bottom: 3px;
+}
+#mainContent table {
+	border: 1px solid #999;
+}
+#mainContent th {
+	border: 1px solid #999;
+	background: #B4BD91;
+}
+#mainContent td {
+	border: 1px solid #999;
+}
+/* Controls Layout of Main Content */
+
+.threeColumn {
+	padding: 0px 10px 0px 0px;
+	margin: 0px 205px 0 185px;
+}
+.twoColumn {
+	padding: 0px 10px 0px 0px;
+	margin: 0px 5px 0 185px;
+}
+.oneColumn {
+	padding: 0px 10px;
+	margin: 0px 5px 0;
+}
+#search {
+	float: right;
+	width: 210px;
+	height: 30px;
+	margin-top: 5px;
+}
+#sidebar2 {
+	float: right; /* since this element is floated, a width must be given */
+	width: 190px; /* the actual width of this div, in standards-compliant browsers, or standards mode in Internet Explorer will include the padding and border in addition to the width */
+	background: #ffffff; /* padding keeps the content of the div away from the edges */
+	margin: 10px 10px 15px;
+	padding:0 0 10px;
+	background:url(../assets/design/box190_base.gif) no-repeat left bottom;
+}
+#sidebar2 .box190 {
+	width:190px;
+	background:url(../assets/design/box190.gif) no-repeat;
+}
+#sidebar2 .box190 h3 {
+	line-height:31px;
+	color:#333;
+	padding:0 15px;
+	margin:0;
+	font-size:1.15em;
+	border-style: none;
+}
+#sidebar2 .box190 p {
+	padding:15px 10px 0;
+	margin:0;
+	background:#fff;
+	line-height:1.3em;
+	font-size:1em;
+	color:#444;
+	border-right: 1px solid #E0DFE3;
+	border-left: 1px solid #E0DFE3;
+}
+#sidebar2 .box190 ul {
+	list-style:none;
+	padding:5px 14px 0;
+	margin:0;
+	width:160px;
+	background:#FFF;
+	height:auto;
+	border-right: 1px solid #E0DFE3;
+	border-left: 1px solid #E0DFE3;
+}
+#sidebar2 .box190 ul li {
+	text-decoration:none;
+	color:#333;
+	padding:2px 0;
+	font-size:1em;
+	border-bottom:1px solid #F1F1F1;
+	word-spacing:-1px;
+	list-style: none;
+}
+#sidebar2 .box190 ul li a {
+	text-decoration:none;
+	color:#333;
+	font-weight:bold;
+}
+#footer {
+	padding: 0 0px 0 185px; /* this padding matches the left alignment of the elements in the divs that appear above it. */
+	background:#B4BD91;
+	border-bottom: 1px solid #333333;
+	border-top: 1px solid #4A5231;
+}
+#footer p {
+	margin: 0; /* zeroing the margins of the first element in the footer will avoid the possibility of margin collapse - a space between divs */
+	padding: 7px 0px 10px; /* padding on this element will create space, just as the the margin would have, without the margin collapse issue */
+	font-size: .80em;
+}
+.fltrt { /* this class can be used to float an element right in your page. The floated element must precede the element it should be next to on the page. */
+	float: right;
+	margin-left: 8px;
+}
+.fltlft { /* this class can be used to float an element left in your page */
+	float: left;
+	margin-right: 8px;
+}
+.clearfloat { /* this class should be placed on a div or break element and should be the final element before the close of a container that should fully contain a float */
+	clear:both;
+	height:0;
+	font-size: 1px;
+	line-height: 0px;
+}
+.imgscright {
+	float:right;
+	margin: 5px 0px 6px 15px;
+}
+.imgsleft {
+	float:left;
+	margin: 5px 15px 6px 0px;
+}
+.smtxt {
+	font-family:  	Verdana, Arial, sans-serif;
+	font-size: 9px;
+}
+/* This is CSS for the Search Box at Right Top */
+#housekeep {
+	position: absolute;
+	top: 30px;
+	font-size: .75em;
+	color: #CCCCCC;
+	margin: 2px;
+}
+#housekeep a {
+	color: #FFFFFF;
+	text-decoration: underline;
+	font-weight: normal;
+}
+#housekeep a:hover {
+	text-decoration: underline;
+	color: #8a3B25;
+}
+.morespace {
+	font-weight: bold;
+}
+.morespace ul {
+	list-style-type: none;
+	padding: 0px;
+	margin: 0px;
+	padding-top: 24px;
+	margin-top:10px;/* white-space:nowrap; */
+}
+.morespace li {
+	display: block;
+	margin: 0;
+	text-align: left;
+	padding-top: 12px;
+	padding-left: 8px;
+	font-size: 1em;
+	font-weight: bold;
+	line-height: 1.15em;
+}
+.morespacenum {
+	font-weight: bold;
+}
+.morespacenum ol {
+	padding: 0px;
+	margin: 0px;
+	padding-top: 24px;
+	margin-top:10px;/* white-space:nowrap; */
+}
+.morespacenum li {
+	margin: 0;
+	text-align: left;
+	padding-top: 12px;
+	padding-left: 8px;
+	font-size: 1em;
+	font-weight: bold;
+	line-height: 1.15em;
+}
+.space {
+	font-weight: normal;
+}
+.space ul {
+	list-style:outside;
+	list-style-type:circle;
+	padding-top:24px;
+	padding-bottom:24px;
+	margin-top:10px;
+	margin-bottom:10px;
+}
+.space li {
+	margin: 5px;
+	text-align: left;
+	padding-top: 6px;
+	padding-left: 8px;
+	font-size: 1em;
+	line-height: 1.15em;
+}
+/* This is CSS for the Photo Galleries */	
+#thumbnails img {
+	width:100px;
+	border:1px solid #D5D5CA;
+	padding: 4px;
+	background: #FFFFFF;
+	margin-right: 4px;
+	margin-bottom: 4px;
+	text-decoration: none;
+}
+#thumbnails a {
+	text-decoration: none;
+	font-size: .7em;
+	font-weight: bold;
+}
+/* This CSS lowers the flash for Chrome and Firefox. */
+#lower {
+	margin: 0px;
+	padding-top: 10px;
+}
+
+#social ul {
+	margin: 0;
+	margin-left: -40px;
+	padding: 0;
+	list-style-type: none;
+	font: normal 100% Verdana, Arial, Helvetica, sans-serif;
+	font-size:1em;
+}
+#social li { margin:0;
+             padding:0;
+	display: inline;
+}
+#social li a {margin: 0;
+	padding: 0;
+	text-decoration: none;
+	color: #000;
+	font-weight:bold;
+}
+#social li a:hover {color: #930b0f;}
+
+sub 			{position: relative; top: 3px; text-decoration: none; line-height: 0px; vertical-align:baseline; font-size: 80%;}
+sup				{position: relative; top: -5px; text-decoration: none; line-height: 0px; vertical-align:baseline; font-size: 80%;}
+

@@ -1,0 +1,63 @@
+
+
+div#mainContent h1, div#mainContent h2	{margin-left:0; padding-left:0; }
+div#mainContent h3	{font-weight:bold; font-size: 1.25em; border:none; margin:.5em 0; padding:0; }
+div#mainContent h1 span, div#mainContent h2 span, div#mainContent h3 span {font-weight:normal; }
+div#mainContent h4	{font-weight:bold; font-size: 1.15em;}
+
+div#mainContent p	{line-height:1.5em;}
+
+
+table.speciesReg	{background-color: #D1CDC3; border-collapse:collapse;}
+table.speciesReg th td			{background-color: #B4BD91; color:#000000; border-bottom:2px solid #000000;}
+table.speciesReg th td span		{font-weight:normal;}
+table.speciesReg tr.lightbrown td		{background-color:#FFFFFF;}
+table.speciesReg tr.darkbrown td			{background-color: #E0E0E0;}
+table.speciesReg tr.breakheader			{padding: 4px 0;}
+table.speciesReg tr.breakheader td		{background-color:#DEEAC9; text-align:left; font-weight:bold;}
+table.speciesReg td.species span		{font-weight:normal;}
+table.speciesReg td		{vertical-align:top; background-color:#FFFFFF;}
+table.speciesReg td.speciesgroupspecificinfo	{vertical-align:middle;}
+table.speciesReg td ul	{padding-left:20px; margin-left:0px; margin-top:0px}
+
+table.speciesReg tr td.lightbrown		{background-color:#FFFFFF;}
+table.speciesReg tr td.darkbrown			{background-color: #E0E0E0;}
+
+#outerImageContainer{ position: relative; background-color: #fff; width: auto; height: auto; margin: 0 auto; }
+
+#sidebar1	{background:none; background-color:#4A5231; -moz-border-radius: .5em; -webkit-border-radius: .5em; 
+			-khtml-border-radius: .5em; border-radius: .5em; border: 1px solid #333333;}
+#sidebar1 .box160		{background:none;}
+
+
+#sidebar1 .box160 p {padding:.25em 0 .25em .85em; margin:0 0 0 0; background:transparent; line-height:2em; font-size:1.15em; color:#fff; 
+					border:none; border-bottom: 2px solid #252525; border-top: 2px solid #252525; font-weight:bold;}
+#sidebar1 .box160 p:first-child	{border-top:none;}
+#sidebar1 .box160 p:last-child	{}
+#sidebar1 .box160 p a, #sidebar1 .box160 p a:link	{color:#FFFFFF; font-weight:bold; text-decoration:none;}
+#sidebar1 .box160 p a:visited	{}
+#sidebar1 .box160 p a:hover		{color:#fff200;  text-decoration:none;}
+
+#sidebar1 .box160 ul	{padding-left:.85em; margin-bottom: 1.5em; border:none;}
+
+
+.back-to-top {
+			position: fixed;
+			bottom: 0em;
+			right: 20.25em;
+			text-decoration: none;
+			color: #FFFFFF;
+			background-color: #000000;
+			font-size: 12px;
+			padding: 1em 1em 3em 1em;
+			display: none;
+			border-top-left-radius:1em;
+			border-top-right-radius:1em;
+			border-bottom-right-radius:0em;
+			border-bottom-left-radius:0em;
+		}
+
+		.back-to-top:hover {	
+			background-color: #FFFFFF;
+			color:#000000;
+		}	
