@@ -153,8 +153,7 @@ function unformatDate(datestr) {
 }
 
 function getData(wellID) {
-   // var url = "data/wl" + wellID + ".xml"
-    var url = "http://usgswells.dnr.sc.gov/api/WaterLevel/GetWaterLevel?WellId=" + wellID
+    var url = "data/wl" + wellID + ".xml"
     $.ajax({
         type: "GET",
         url: url,
