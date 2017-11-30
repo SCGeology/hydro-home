@@ -1,0 +1,187 @@
+<!DOCTYPE HTML>
+
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+    <title>SC Groundwater Data</title>
+    <link href="hydrostyle.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/Leaflet/Leaflet.markercluster/v1.0.0-rc.1/dist/MarkerCluster.Default.css">
+    <link rel="stylesheet" type="text/css" href="https://cdn.rawgit.com/Leaflet/Leaflet.markercluster/v1.0.0-rc.1/dist/MarkerCluster.css">
+    <link rel="stylesheet" href="https://unpkg.com/esri-leaflet-geocoder@2.2.6/dist/esri-leaflet-geocoder.css">
+
+    <script src="https://use.fontawesome.com/b4f8eb2c18.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.1.min.js" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8=" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <script src="js/dygraph-combined.js"></script>
+    <script src="https://unpkg.com/esri-leaflet@2.0.3"></script>
+    <script src="js/papaparse.min.js"></script>
+    <script src="js/dygraph-extra.js"></script>
+    <script src="https://unpkg.com/esri-leaflet-geocoder@2.2.6"></script>
+
+    <!-- Include Leaflet.markercluster via rawgit.com
+in production you'd be better off hosting these libraries yourself -->
+    <script src="https://cdn.rawgit.com/Leaflet/Leaflet.markercluster/v1.0.0-rc.1/dist/leaflet.markercluster.js"></script>
+
+
+    <!-- Load Clustered Feature Layer from CDN -->
+    <script src="https://unpkg.com/esri-leaflet-cluster@2.0.0"></script>
+
+</head>
+
+<body>
+    <div id="container">
+        <div id="header">
+            <div class="sandbag">
+                <a href="http://www.dnr.sc.gov/"><img src="image/trans1x1.gif" width="100" height="90" border="0" alt="SCDNR Home Page" /></a>
+            </div>
+            <div id="search">
+                <div id="housekeep"> <a href="http://www.dnr.sc.gov/sitemap.html">Site Map</a> | <a href="http://www.dnr.sc.gov/"><acronym title="South Carolina Department of Natural Resources">SCDNR Home</acronym></a> </div>
+            </div>
+        </div>
+        <div id="main">
+
+            <div id="content">
+
+                <div id="map">
+                    <div id="table">
+                        <h4>Selected Well</h4>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <th>Well ID</th>
+                                </tr>
+                                <tr>
+                                    <td id="id"></td>
+                                </tr>
+                                <tr>
+                                    <th>Aquifer</th>
+                                </tr>
+                                <tr>
+                                    <td id="aq"></td>
+                                </tr>
+                                <tr>
+                                    <th>Well Depth</th>
+                                </tr>
+                                <tr>
+                                    <td id="wd"></td>
+                                </tr>
+                                <tr>
+                                    <th>Screen Depth</th>
+                                </tr>
+                                <tr>
+                                    <td id="sd"></td>
+                                </tr>
+                                <tr>
+                                    <th>Measure Type</th>
+                                </tr>
+                                <tr>
+                                    <td id="type"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <button id="getdata" class="btn btn-primary disabled" title="Select a well on the map.">Get Data</button>
+                    </div>
+                </div>
+
+                <div id="legend"><img src="image/legend.png" alt="well legend" /></div>
+
+                <div id="belowmap">
+                    <h4>Hydrograph --- <span id="wellTitle" style="color:#555;">Select a well from the map.</span></h4>
+                    <div id="hydrolegend"><img src="image/adr.png" /><p>Data from Automatic Data Recorder (ADR)</p><p style="margin:0 0 0 20px;">|</p><img src ="image/manual.png" /><p>Manual measurements</p>
+                    <button style="margin-left: 10px;" id="manualview" type="button" class="btn btn-xs btn-primary disabled">View Manual</button>
+                    </div>
+                    <div id="chart"></div>
+                    <div id="datefilter">
+                        <form class="form-inline">
+                            <div class="form-group">
+                                <label for="startdate">Start Date</label>
+                                <input type="date" class="form-control" id="startdate" placeholder="mm/dd/yyyy">
+                            </div>
+                            <div class="form-group">
+                                <label for="enddate">End Date</label>
+                                <input type="date" class="form-control" id="enddate" placeholder="mm/dd/yyyy">
+                            </div>
+                            <button id="filter" type="button" class="btn btn-primary disabled">Filter Data</button>
+                            <button id="reset" type="button" class="btn btn-success disabled">Full Extent</button>
+                        </form>
+                    </div>
+                    <h4>Download Data</h4>
+                    <p>Daily water level data are downloaded in a CSV format.</p>
+                    <div class="radio">
+                        <label class="radio-inline">
+                            <input type="radio" name="optradio" id="fullrecord" checked="checked">Full Period of Record</label>
+                        <label class="radio-inline">
+                            <input type="radio" name="optradio" id="select">Selected Period Only (dates above)</label>
+                    </div>
+                    <div id="buttons">
+                        <button class="btn btn-primary disabled" id="dailydl" title="Select a well from the map to download data."><i class="fa fa-arrow-circle-down" aria-hidden="true"></i>Download Now</button>
+                    </div>
+
+                    <h4>Groundwater Monitoring Network</h4>
+                    <p>The South Carolina Department of Natural Resources (DNR) routinely collects groundwater level data for water-resource assessments and for management and planning purposes. DNR's base groundwater monitoring network currently includes 170 wells, including 33 cluster sites.</p>
+                    <ul class="toggler">
+                        <li class="question closed">Why does SCDNR collect groundwater data?</li>
+                        <p class="answer">These data are used to identify short- and long-term changes in groundwater levels and storage due to changes in withdrawals, recharge rates, and climatic conditions; to calibrate ground-water flow models; to produce potentiometric maps for the major aquifers in the Coastal Plain Province; and to determine regional hydraulic gradients, and groundwater flow rates and directions of the major aquifers.</p>
+
+                        <li class="question closed">How often are water levels measured?</li>
+                        <p class="answer">Water levels of <strong>135 wells are measured hourly with automated data recorders (ADRs)</strong>; the remaining wells are measured periodically (manual wells), typically on a bimonthly basis using an electric measuring tape.</p>
+
+                        <li class="question closed">What aquifers are monitored by the network?</li>
+                        <p class="answer">NEED TO RE-WRITE THIS TO TAKE INTO ACCOUNT THE NEW AQUIFER NAMES.</p>
+
+                        <li class="question closed">What is the format of the downloaded water level data?</li>
+                        <p class="answer">Data are downloaded in as a CSV file with daily average water levels for each date in the period of record. Daily average water levels are calculated for each day having 7 or fewer missing hourly measurements. Manual measurements at each well site are also included in the data download.</p>
+
+                        <li class="question closed">In what units are water levels reported?</li>
+                        <p class="answer">All groundwater levels available here are reported in <strong>feet below land surface</strong>, except for several flowing wells where water levels rise above land surface. Negative water-level values are assigned to these sites to indicate that water levels are above land surface as opposed to below land surface.</p>
+
+                        <li class="question closed">How long has groundwater been monitored by SCDNR?</li>
+                        <p class="answer">Most monitoring wells have been measured since the mid-to-late 1990s, although a number of wells existed before then, one dating back to 1955.</p>
+
+                    </ul>
+
+                    <h4>Groundwater Data Reports</h4>
+                    <ul>
+                        <li><a href="http://www.dnr.sc.gov/water/hydro/HydroPubs/pdf/Report_57_GW_Network.pdf">South Carolina DNR Groundwater Monitoring Network Status Report - July 2009 through June 2014</a></li>
+                        <li><a href="http://www.dnr.sc.gov/water/hydro/HydroPubs/pdf/Report_50_WL_Data.pdf">Ground-Water Levels in South Carolina 2006-2010 (PDF)</a>
+                        </li>
+                        <li><a href="http://www.dnr.sc.gov/water/hydro/HydroPubs/pdf/williamsburg.pdf">Ground-Water Resources of Williamsburg County, South Carolina 2006-2010 (PDF)</a>
+                        </li>
+                        <li><a href="http://www.dnr.sc.gov/water/hydro/HydroPubs/Abs_dnr_R41.htm">Water Resources Data for South Carolina, 2000-2005</a>
+                        </li>
+                        <li><a href="http://www.dnr.sc.gov/water/hydro/HydroPubs/Abs_dnr_R31.htm">Water Resources Data for South Carolina, 2000-2001</a>
+                        </li>
+                        <li><a href="http://www.dnr.sc.gov/water/hydro/HydroPubs/Abs_dnr_R26.htm">Ground-Water Levels in South Carolina - A Compilation of Historical Water-Level Data</a>
+                        </li>
+                    </ul>
+
+                    <h4>More Groundwater Resources</h4>
+                    <p><a href="../pot-mapping.html">Potentiometric Mapping</a></p>
+                    <p><a href="../groundwater-modeling.html">Groundwater and Hydrogeologic Modeling</a></p>
+                    <p><a href="../WellRecords/index.htm">Coastal Plain Well Inventory</a></p>
+                    <p><a href="../publications.html">Hydrology Publications</a></p>
+
+                    <h4>Disclaimer</h4>
+                    <p style="font-size:80%;">Data presented on this web site may have been retrieved partially or entirely from several sources including federal or other state agencies. DNR makes every effort to provide accurate and complete information, however, the database is a "work in progress" and updates will occur regularly. In no event should the South Carolina Department of Natural Resources or any contributing agencies be liable for any direct or indirect, incidental, or other damages arising from the use of these data. DNR does not warrant, guarantee, or make any representations regarding the use, or the results of the use, of the information provided to you by the Department in terms of correctness, accuracy, reliability, timeliness or otherwise. The entire risk as to the results and performance of any information obtained from the DNR is entirely assumed by the recipient. DNR welcomes suggestions on how to improve our home page and correct errors.</p>
+                    <p>
+                </div>
+            </div>
+        </div>
+        <br class="clearfloat" />
+        <br />
+        <div id="footer">
+            <p> South Carolina Department of Natural Resources - <a href="http://www.dnr.sc.gov/admin/phone.html">Phone Numbers</a> | <a href="http://www.dnr.sc.gov/accessibility.html">Accessibility</a>
+                <br /> Rembert C. Dennis Building, 1000 Assembly Street, Columbia, SC 29201
+                <br /> &copy; 2010 All rights reserved. <a href="Mailto:webmaster@dnr.sc.gov">webmaster@dnr.sc.gov</a></p>
+        </div>
+    </div>
+
+    <script src="js/gw.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,246 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>SCDNR - Hydrology</title>
+    <!--[if IE 5]>
+<style type="text/css"> 
+/* place css box model fixes for IE 5* in this conditional comment */
+#sidebar1 { width: 195px; }
+#sidebar2 { width: 210px; }
+</style>
+<![endif]-->
+    <!--[if IE]>
+<style type="text/css"> 
+/* place css fixes for all versions of IE in this conditional comment */
+#sidebar1 { padding-top: 0px; }
+#sidebar1 { padding-top: 0px; }
+#mainContent { padding-top: 0px; }
+/* the above proprietary zoom property gives IE the hasLayout it needs to avoid several bugs */
+</style>
+<![endif]-->
+    <link href="../../css/index8.css" rel="stylesheet" type="text/css">
+    <style>
+        .buttons{
+            width:65%;
+            margin-bottom:10px;
+            display: flex;
+            justify-content: space-around;
+        }
+        button {
+            background-color: #337ab7;
+            color:white;
+            padding: 8px;
+            border-radius: 4px;
+            border: 1px solid #2e6da4;
+            cursor: pointer;
+        }
+        button:hover{
+            background-color:#2e6da4;
+        }
+        #mainContent {
+            padding: 2%;
+        }
+        #splitters{
+            display: table;
+            width:100%;
+            height:100%
+        }
+        .split{
+            display: table-cell;
+            width:49%;
+        }
+        #intro p{
+            margin:10px;
+            width:65%;
+        }
+        .split h2{
+            border-bottom: 1px solid gray;
+            margin:5px;
+            padding:2px;
+            width:95%;
+        }
+        #databuttons {
+            margin:10px 0 10px 10px;
+            width:65%;
+            padding: 5px;
+            display:none;
+            clear:both;
+        }
+        .split ul{
+            padding-left:15px;
+        }
+        .split p {
+            color:#555;
+            padding:0 6px;
+        }
+        .split a {
+            text-decoration:underline;
+            color:#155d9b;
+        }
+        .split a:hover{
+            text-decoration: none;
+        }
+        .split a:visited {
+            color:#155d9b;
+        }
+        .split li{
+         
+            padding: 3px;
+            margin-right:5px;
+            border-radius: 3px;
+            font-weight: bold;
+            list-style: none;
+        }
+    </style>
+    
+    <script src="../waterplan/lightbox/js/jquery-1.11.0.min.js"></script>
+    
+</head>
+
+<body>
+    <div id="container">
+        <div id="header">
+            <div class="sandbag">
+                <a href="http://www.dnr.sc.gov/"><img src="../../assets/trans1x1.gif" width="100" height="90" border="0" alt="SCDNR Home Page"></a>
+            </div>
+            <div id="search">
+                <form action="http://www.dnr.sc.gov/search.html" id="cse-search-box">
+                    <div>
+                        <input type="hidden" name="cx" value="005023224500699342681:dwmyvyecwpm" />
+                        <input type="hidden" name="cof" value="FORID:10" />
+                        <input type="hidden" name="ie" value="UTF-8" />
+                        <input type="text" name="q" size="19" alt="Enter search key words" title="Enter search key words" style="width:140px" />
+                        <input type="submit" name="sa" value="Go" style="width:36px" />
+                    </div>
+                    <noscript>
+                        Google Custom Search of web site
+                    </noscript>
+                </form>
+                <script type="text/javascript" src="http://www.google.com/cse/brand?form=cse-search-box&lang=en"></script>
+                <div id="housekeep">
+                    <a href="#skip"><img src="../../assets/trans1x1.gif" width="1" height="1" border="0" alt="Skip Navigation"></a><a href="http://www.dnr.sc.gov/sitemap.html">Site map</a> | <a href="http://www.dnr.sc.gov/">SCDNR Home</a> </div>
+            </div>
+            <!-- end #header -->
+        </div>
+        <div id="navtop">
+            <ul>
+                <li><a class="first" href="../../purchase.html">Buy</a></li>
+                <li><a href="../../boating.html">Boating</a></li>
+                <li><a href="../../education.html">Education</a></li>
+                <li><a href="../../fishing.html">Fishing</a></li>
+                <li><a href="../../hunting.html">Hunting</a></li>
+                <li><a href="../../land.html">Land</a></li>
+                <li><a href="../../regulations.html">Regulations</a></li>
+                <li><a href="../../water.html">Water</a></li>
+                <li><a href="../../wildlife.html">Wildlife</a></li>
+            </ul>
+        </div>
+
+        <div id="mainContent">
+            <div id="intro">
+                <h1>Hydrology Section</h1>
+                <img style="width:240px;height:auto;float:right;" src="images/GreatFalls.jpg" alt="Great Falls">
+                <p><span class="mission">The mission of the Hydrology Section is to 
+      provide guidance, counsel, and data to the State government and the general 
+      public for the beneficial use, conservation, and management of South Carolina's 
+      water resources. To that end, the Section maintains a program of hydrologic 
+      projects and technical activities aimed at collecting hydrologic, geologic, and 
+      water-quality data; monitoring the availability of surface water and ground water; 
+      and studying and modeling these resources. The Hydrology Section is concerned with 
+      maintaining a balance among water-supply development, economic growth, and 
+      preservation of fish and wildlife habitats.</span></p>
+            </div>
+
+            <div class="buttons">
+                <button id="dldata">Download Data</button>
+                <a href="http://www.dnr.sc.gov/water/hydro/publications.html"><button>Publications</button></a>
+                <a href="http://www.dnr.sc.gov/water/hydro/gwnews.html"><button>Newsletter</button></a>
+                <a href="http://www.dnr.sc.gov/water/waterplan/index.html"><button>State Water Plan</button></a>
+                <a href="http://www.dnr.sc.gov/water/hydro/staff.html"><button>Contact</button></a>
+            </div>
+            <div id="databuttons">
+                <img style="vertical-align:middle;margin-right:5px;" src="../waterplan/assets/downarrow.png"/>
+                <a href="groundwater/index.html"><button>Groundwater Data</button></a>
+                <a href="http://www.dnr.sc.gov/hydro/gl_home.html"><button>Geophysical Data</button></a>
+            </div>
+
+            <div id="splitters">
+                <div class="split">
+                    <h2>Surface Water</h2>
+                    <ul>
+                        <li><a href="http://www.dnr.sc.gov/water/waterplan/surfacewater.html">Surface Water Modeling</a></li>
+                        <p>Reports, presentations and meeting notes from statewide modeling of surface water availiblity.</p>
+                        <li><a href="http://www.dnr.sc.gov/water/hydro/streamflow.html">Streamflow Monitoring</a></li>
+                        <p>The SCDNR hosted two streamflow monitoring workshops to highlight streamflow monitoring needs in the State and to solicit additional monitoring recommendations.</p>
+                        <li><a href="http://www.dnr.sc.gov/water/hydro/docs/Project_FERC.pdf">FERC Relicensing</a></li>
+                        <p>DNR hydrologists and biologists work closely with the numerous stakeholders to ensure that the State’s
+natural resources associated with each licensed hydropower project are protected.</p>
+                        <li><a href="http://www.dnr.sc.gov/water/hydro/docs/Project_SRB_Comp_Study.pdf">Savannah River Basin Comprehensive Study</a></li>
+                        <p>During this
+phase, the current Drought Contingency Plan will be evaluated to determine if
+additional storage can be preserved in the lakes during droughts without having
+adverse effects on users and the ecosystem downstream.</p>
+                        <li><a href="http://www.dnr.sc.gov/water/hydro/docs/Project_Springs.pdf">Statewide Springs Database</a></li>
+                        <p>This inventory contains information on the name and location of each
+spring and additional information such as general water chemistry,
+owner, and historical information where available.</p>
+                        <li><a href="https://waterdata.usgs.gov/sc/nwis/rt" target="_blank">Current and Historical Streamflow</a></li>
+                        <p>Looking for streamflow data? Please visit the USGS National Water Information System web page for South Carolina (linked above).</p>
+                    </ul>
+                </div>
+
+                <div class="split">
+                    <h2>Groundwater</h2>
+                    <ul>
+                        <li><a href="groundwater/index.html">Groundwater Monitoring Network</a></li>
+                        <p>Groundwater levels are measured and reported routinely across the State. View hydrographs and download data from our monitoring network.</p>
+                        <li><a href="http://www.dnr.sc.gov/hydro/gl_home.html">Digital Geophysical Logs</a></li>
+                        <p>Find and download digital geophysical logs that were made of water wells in South Carolina.</p>
+                        <li><a href="groundwater-modeling.html">Hydrogeologic Modeling</a></li>
+                        <p>SCDNR hydrologists are modeling the state's groundwater resources in multiple capacities, including delineating aquifers, modeling groundwater recharge, and modeling groundwater flow conditions.</p>
+                        <li><a href="pot-mapping.html">Potentiometric Mapping</a></li>
+                        <p>View and download potentiometric maps, developed routinely for the major aquifers from water level data across the coastal plain.</p>
+                        <li><a href="saltwater-intrusion.html">Salt Water Intrusion</a></li>
+                        <p>Salt water intrusion is being monitored along the South Carolina coast.</p>
+                        <li><a href="http://www.dnr.sc.gov/water/hydro/WellRecords/Wells_main.htm">Coastal Plain Water Well Database</a></li>
+                        <p>The Hydrology Section has hard-copy records of more than 13,000 water wells located in the Coastal Plain counties of South Carolina.</p>
+
+                    </ul>
+
+                </div>
+            </div>
+
+            <p>&nbsp;</p>
+            <h4 style="border-bottom:1px solid gray;">Looking for more?</h4>
+            <p style="margin-left:15px;">More hydrology information can be found through the <a href="http://www.dnr.sc.gov/water/hydro/links.html">websites of other agencies and organizations.</a></p>
+        </div>
+        
+                <!-- JQUERY TOGGLE SCRIPT -->
+        <script>
+            $(function() {
+                $('#dldata').click(function() {
+                    $('#databuttons').slideToggle();
+                });
+            });
+        </script>
+        
+        
+        <!-- This clearing element should immediately follow the #mainContent div in order to force the #container div to contain all child floats -->
+        <br class="clearfloat" />
+        <div id="footer">
+            <!-- #BeginLibraryItem "/Library/footer verbiage.lbi" -->
+            <p>South Carolina Department of Natural Resources - <a href="http://www.dnr.sc.gov/admin/phone.html">Phone Numbers</a> | <a href="http://www.dnr.sc.gov/accessibility.html">Accessibility</a> |
+                <a href="http://www.dnr.sc.gov/admin/foia.html"> <abbr title="Freedom of Information Act">FOIA</abbr></a>
+                <br> Rembert C. Dennis Building, 1000 Assembly Street, Columbia, SC 29201
+                <br> &copy; 2014 All rights reserved. <a href="mailto:webmaster@dnr.sc.gov">webmaster@dnr.sc.gov </a>
+            </p>
+            <!-- #EndLibraryItem -->
+            <!-- end #footer -->
+        </div>
+        <!-- end #container -->
+    </div>
+</body>
+
+</html>
