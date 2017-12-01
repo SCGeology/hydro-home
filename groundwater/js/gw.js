@@ -49,12 +49,13 @@ function style(feature) {
     }
 }
 
-//start the highlight marker at 0,0 so it's out of site. Then when a marker is clicked, all you have to do is setLatLng... def a workaround.
+//start the highlight marker at 0,0 so it's out of sight. Then when a marker is clicked, all you have to do is setLatLng... def a workaround.
 var highlight = L.circleMarker([0, 0], {
     color: "#ff1d00",
     radius: 9,
     fillOpacity: 0,
-    weight: 5
+    weight: 5,
+    pane:'tooltipPane'
 }).addTo(map);
 
 //Custom radius and icon create function
@@ -132,6 +133,41 @@ searchControl.on("results", function(data) {
     }
 });
 
+// custom control to clear the map search and well selection
+L.Control.ClearMap = L.Control.extend({
+    options: {
+        position: 'bottomright'
+    },
+    onAdd: function(map){
+        var clearDiv = L.DomUtil.create("a", "leaflet-clear-control leaflet-touch leaflet-bar");
+        var icon = L.DomUtil.create("i", "fa fa-times-circle-o fa-2x");
+        clearDiv.title = "Clear Map Search and Selection"
+        clearDiv.appendChild(icon);
+        
+        L.DomEvent.on(clearDiv,'click', function(){
+            searchResults.clearLayers();
+            highlight.setLatLng([0,0]);
+            
+            //this clears the table on the size
+            $("#table td").empty();
+            
+            //disable get data button until anoather well is clicked
+            $("#getdata").addClass("disabled");
+        });
+        
+        return clearDiv;
+    },
+    
+    onRemove: function(map){  
+    },
+    
+});
+
+L.control.clearMap = function(opts) {
+    return new L.Control.ClearMap(opts);
+}
+
+L.control.clearMap().addTo(map);
 
 //~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ Hydrograph and other non map related stuff below ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 //pass a date object
@@ -186,8 +222,6 @@ function wellParse(xml) {
         var date = $(this).find("DATE_TIME").text();
         var msmt = $(this).find("MEASUREMENT_METHOD").text();
         
-        var lastdate
-        
         //you could pad the min and max with some percent of the range    
         if (parseFloat(level) < valmin) {
             valmin = parseFloat(level) - (parseFloat(level) * 0.1)
@@ -213,6 +247,7 @@ function wellParse(xml) {
         ylabel: "ft below land surface",
         xRangePad: 10,
         zoomCallback: function(minDate, maxDate) {
+            //This happens when you do a zoom action on the hydrograph
             var min = new Date(minDate);
             var max = new Date(maxDate);
             $("#startdate").val(formatDate(min));
@@ -233,13 +268,14 @@ function wellParse(xml) {
         },
         visibility: [true, false]
     });
-
-    //sets the input date boxes to the dates at end of range when well is first clicked
+    
+    hg.resetZoom();
+    
+    //sets the input date boxes to the dates when you first load the data into the hydrograph
     var start = new Date(hg.xAxisRange()[0])
     $("#startdate").val(formatDate(start))
     var end = new Date(hg.xAxisRange()[1])
     $("#enddate").val(formatDate(end));
-
 };
 
 $("#filter").click(function() {

@@ -286,6 +286,26 @@ caption {
     margin: 0 15px;
 }
 
+.leaflet-clear-control {
+    height:34px;
+    width:34px;
+    background-color:white;
+}
+.leaflet-clear-control i {
+    margin:3px 5px;
+    color:darkred;
+}
+
+.leaflet-clear-control:hover{
+    cursor: pointer;
+}
+.leaflet-clear-control i:hover{
+    color:#a05555;
+}
+.leaflet-clear-control i:active{
+    color:gray;
+}
+
 /*table on map displaying well info*/
 #table{
     position: absolute;
