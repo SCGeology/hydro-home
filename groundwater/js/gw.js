@@ -153,6 +153,9 @@ L.Control.ClearMap = L.Control.extend({
             
             //disable get data button until anoather well is clicked
             $("#getdata").addClass("disabled");
+            
+            //zoom map to orignal extent. 
+            map.setView([33.6, -81.4], 7)
         });
         
         return clearDiv;
