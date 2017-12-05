@@ -302,7 +302,14 @@ var headers = [
 
 //unparse the data array to download to csv
 var makecsv = function(indata, filename) {
-    var dldata = headers.concat(indata),
+    var betterdata = []
+
+//making a new array with more friendly dates for download to csv - doesn't print time. is that ok?  
+    $.each(indata, function(i,v){
+        betterdata.push([v[0].toLocaleDateString(),v[1],v[2]])
+    });
+    
+    var dldata = headers.concat(betterdata),
         daily = Papa.unparse(dldata);
 
     var a = document.createElement('a')
@@ -335,6 +342,8 @@ var downloaddata = function() {
     }
 };
 
+$("#dailydl").bind("click", downloaddata)
+
 $("#getdata").click(function() {
     //clear data array
     dataArray = []
@@ -347,8 +356,7 @@ $("#getdata").click(function() {
     //initiate the get data function 
     getData(wellID);
     //enable the download button
-    $("#dailydl").bind("click", downloaddata)
-        .removeClass("disabled")
+    $("#dailydl").removeClass("disabled")
         .attr("title", "Download daily data.")
     $("#filter, #reset, #manualview").removeClass("disabled");
 });

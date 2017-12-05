@@ -293,14 +293,14 @@ caption {
 }
 .leaflet-clear-control i {
     margin:3px 5px;
-    color:darkred;
+    color:#a06666;
 }
 
 .leaflet-clear-control:hover{
     cursor: pointer;
 }
 .leaflet-clear-control i:hover{
-    color:#a05555;
+    color:darkred;
 }
 .leaflet-clear-control i:active{
     color:gray;
